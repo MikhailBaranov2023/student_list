@@ -1,34 +1,40 @@
-{#{% load my_tags %}#}
+
 {%  extends 'main/base.html'%}
+{% load my_tags %}
 
 {% block content %}
-    <div class="container">
-        <div class="card mb-4 box-shadow ">
-            <div class="card-header d-flex align-items-center justify-content-center h-80">
-                <h5 class="my-0 font-weight-normal text-truncate">Информация студента</h5>
+    <div class="col-12">
+        <div class="row">
+
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                          Информация о студенте
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <tr>
+                                <td>Имя</td>
+                                <td>{{ object.first_name|title }}</td>
+                            </tr>
+                            <tr>
+                                <td>Фамилия</td>
+                                <td>{{ object.last_name|title }}</td>
+                            </tr>
+                            <tr>
+                                <td>Почта</td>
+                                <td>{{ object.email }}</td>
+                            </tr>
+                        </table>
+
+                    </div>
+                    <div class="card-footer"></div>
+                </div>
             </div>
-            <div class="card-body flex-column">
-                  <div class="row align-items-start">
-                    <div class="col">
-                      Имя
-                    </div>
-                    <div class="col">
-                      {{ object.first_name|title }}
-                    </div>
-                  </div>
-                  <div class="row align-items-center">
-                    <div class="col">
-                      Фамилия
-                    </div>
-                    <div class="col">
-                      {{ object.last_name|title }}
-                    </div>
-                  </div>
-                  <div class="row align-items-end">
-                    <div class="col">
-                      Почта
-                    </div>
-                  </div>
+            <div class="coll-6">
+                <img src="{{ object.avatar|mymedia }}" />
             </div>
         </div>
     </div>
